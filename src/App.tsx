@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/** @jsxImportSource @emotion/react */
+import React from 'react'
+import { css, ThemeProvider } from '@emotion/react'
+import { theme } from './theme'
+import DocumentUploader from './DocumentUploader'
 
+const styles = {
+    container: css`
+        height: 100vh;
+        display: flex;
+        color: ${theme.colors.primaryDark};
+        background-color: ${theme.colors.background};
+        justify-content: center;
+        align-items: center;
+        font-family: Raleway, sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+    `,
+}
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <ThemeProvider theme={theme}>
+            <div css={styles.container}>
+                <DocumentUploader />
+            </div>
+        </ThemeProvider>
+    )
 }
 
-export default App;
+export default App
